@@ -2,13 +2,13 @@ use <MCAD/units.scad>;
 
 module plate_with_holes(width,
                         depth,
-                        height,
+                        thickness,
                         holes) {
     difference() {
-        cube([width, depth, height]);
+        cube([width, depth, thickness]);
         for(p = holes) {
             translate([p.x, p.y, 0])
-                cylinder(d=p.z, h=height);
+                cylinder(d=p.z, h=thickness);
         };
     };
 };
