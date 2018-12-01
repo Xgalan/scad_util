@@ -1,6 +1,7 @@
 use <MCAD/units.scad>;
 use <libraries/dimlines.scad>;
 
+
 module plate_with_holes(width,
                         depth,
                         thickness,
@@ -25,23 +26,21 @@ PLATE_THICKNESS = 15;
 PLATE_WIDTH = 400;
 PLATE_LENGTH = 300;
 
-HOLES = [ [20,20,2],
-          [40,20,3],
-          [120,20,4],
-          [140,20,5],
-          [20,160,6],
-          [40,160,7] ];
+HOLES = [ [10,10,5],
+          [PLATE_WIDTH-10,10,5],
+          [PLATE_WIDTH-10,PLATE_LENGTH-10,5],
+          [10,PLATE_LENGTH-10,5] ];
 
 translate([-PLATE_WIDTH, -PLATE_LENGTH, 0])
 plate_with_holes(PLATE_WIDTH, PLATE_LENGTH,
                  PLATE_THICKNESS, HOLES);
 
-translate([PLATE_WIDTH/5, 0, 0])
-rotate([-45, -60, -30])
+translate([PLATE_WIDTH*0.8, -DOC_HEIGHT*0.4, 0])
+rotate([-45, 60, 30])
 plate_with_holes(PLATE_WIDTH, PLATE_LENGTH,
                  PLATE_THICKNESS, HOLES);
 
-translate([-PLATE_WIDTH,PLATE_LENGTH/3,0])
+translate([-PLATE_WIDTH,PLATE_LENGTH/2,0])
 rotate([90, 0, 0])
 plate_with_holes(PLATE_WIDTH, PLATE_LENGTH,
                  PLATE_THICKNESS, HOLES);
@@ -65,11 +64,7 @@ module draw_frame(length, height, line_width=DIM_LINE_WIDTH) {
 color("Black")
 translate([-PLATE_WIDTH*1.1, -PLATE_LENGTH*1.1, DOC_HEIGHT])
 union() {
-    draw_frame(length=DOC_WIDTH*2.3,
-               height=DOC_HEIGHT*2.3,
+    draw_frame(length=DOC_WIDTH*2.35,
+               height=DOC_HEIGHT*2.25,
                line_width=DIM_LINE_WIDTH * 2);
-
-    //color("Black")
-    //translate([975, 153, 0])
-    //sample_titleblock1();
 };
