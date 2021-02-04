@@ -1,0 +1,51 @@
+{
+    "form": "circle",
+    "diameter": 200,
+    "thickness": 10,
+    "holes": [
+        {
+            "diameter": 6,
+            "x_pos": -50,
+            "y_pos": -50,
+            "z_pos": 0,
+            "depth": 10
+        },
+        {
+            "diameter": 6,
+            "x_pos": 50,
+            "y_pos": -50,
+            "z_pos": 0,
+            "depth": 10
+        },
+        {
+            "diameter": 6,
+            "x_pos": 50,
+            "y_pos": 50,
+            "z_pos": 0,
+            "depth": 10
+        },
+        {
+            "diameter": 6,
+            "x_pos": -50,
+            "y_pos": 50,
+            "z_pos": 0,
+            "depth": 10
+        },
+        {
+            "width": 102,
+            "length": 102,
+            "x_pos": -51,
+            "y_pos": -51,
+            "z_pos": 4,
+            "depth": 7
+        },
+        {
+            "width": 100,
+            "length": 100,
+            "x_pos": -50,
+            "y_pos": -50,
+            "z_pos": 0,
+            "depth": 10
+        }
+    ]
+}

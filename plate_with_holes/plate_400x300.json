@@ -1,0 +1,29 @@
+{
+    "width": 400,
+    "height": 300,
+    "thickness": 15,
+    "holes": [
+        {
+            "diameter": 5.5,
+            "x_pos": 20,
+            "y_pos": 20,
+            "z_pos": 0,
+            "depth": 15
+        },
+        {
+            "diameter": 10,
+            "x_pos": 20,
+            "y_pos": 20,
+            "z_pos": 9.5,
+            "depth": 5.5
+        },
+        {
+            "width": 6,
+            "length": 250,
+            "x_pos": 40,
+            "y_pos": 20,
+            "z_pos": 5,
+            "depth": 10
+        }
+    ]
+}

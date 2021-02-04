@@ -1,0 +1,45 @@
+{
+    "width": 20,
+    "height": 56,
+    "thickness": 6,
+    "form": "fillet",
+    "fillet": 5,
+    "holes": [
+        {
+            "diameter": 3.5,
+            "x_pos": 10,
+            "y_pos": 10,
+            "z_pos": 0,
+            "depth": 6
+        },
+        {
+            "diameter": 6,
+            "x_pos": 10,
+            "y_pos": 10,
+            "z_pos": 3,
+            "depth": 3
+        },
+        {
+            "diameter": 3.5,
+            "x_pos": 10,
+            "y_pos": 46,
+            "z_pos": 0,
+            "depth": 6
+        },
+        {
+            "diameter": 6,
+            "x_pos": 10,
+            "y_pos": 46,
+            "z_pos": 3,
+            "depth": 3
+        },
+        {
+            "width": 20,
+            "length": 16,
+            "x_pos": 0,
+            "y_pos": 20,
+            "z_pos": 0,
+            "depth": 1.5
+        }
+    ]
+}

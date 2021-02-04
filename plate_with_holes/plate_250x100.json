@@ -1,0 +1,86 @@
+{
+    "width": 120,
+    "height": 250,
+    "thickness": 15,
+    "holes": [
+        {
+            "diameter": 5.5,
+            "x_pos": 10,
+            "y_pos": 10,
+            "z_pos": 0,
+            "depth": 15
+        },
+        {
+            "diameter": 10,
+            "x_pos": 10,
+            "y_pos": 10,
+            "z_pos": 9.5,
+            "depth": 5.5
+        },
+        {
+            "diameter": 5.5,
+            "x_pos": 110,
+            "y_pos": 10,
+            "z_pos": 0,
+            "depth": 15
+        },
+        {
+            "diameter": 10,
+            "x_pos": 110,
+            "y_pos": 10,
+            "z_pos": 9.5,
+            "depth": 5.5
+        },
+        {
+            "diameter": 5.5,
+            "x_pos": 10,
+            "y_pos": 240,
+            "z_pos": 0,
+            "depth": 15
+        },
+        {
+            "diameter": 10,
+            "x_pos": 10,
+            "y_pos": 240,
+            "z_pos": 9.5,
+            "depth": 5.5
+        },
+        {
+            "diameter": 5.5,
+            "x_pos": 110,
+            "y_pos": 240,
+            "z_pos": 0,
+            "depth": 15
+        },
+        {
+            "diameter": 10,
+            "x_pos": 110,
+            "y_pos": 240,
+            "z_pos": 9.5,
+            "depth": 5.5
+        },
+        {
+            "diameter": 2.5,
+            "x_pos": 30,
+            "y_pos": 30,
+            "z_pos": 0,
+            "depth": 15
+        },
+        {
+            "width": 9,
+            "length": 250,
+            "depth": 1,
+            "x_pos": 25.5,
+            "y_pos": 0,
+            "z_pos": 14
+        },
+        {
+            "width": 9,
+            "length": 250,
+            "depth": 1,
+            "x_pos": 75.5,
+            "y_pos": 0,
+            "z_pos": 14
+        }
+    ]
+}
