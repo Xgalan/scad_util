@@ -1,14 +1,9 @@
 from typing import NamedTuple
-import json
-from pathlib import Path
 
-import click
 from solid import *
 from solid.utils import *  # Not required, but the utils module is useful
 
 import_scad('MCAD/units.scad')
-
-SEGMENTS = 150
 
 
 
@@ -41,10 +36,38 @@ class Hole(NamedTuple):
         )
 
 
-def plate_with_holes(form, dimensions, holes):
+class Boss(NamedTuple):
+    diameter1: float
+    diameter2: float
+    x: float
+    y: float
+    z: float
+    height: float
+    
+    @property
+    def create(self):
+        return translate([self.x, self.y, self.z])(
+            cylinder(d1=self.diameter1, d2=self.diameter2, h=self.height)
+        )
+
+
+def plate_with_holes(form, dimensions, holes, bosses):
     """
     Create a plate with holes
     """
+    holes = [
+        Hole(
+            h["diameter"], h["x_pos"], h["y_pos"], h["z_pos"], h["depth"]
+        ) if "diameter" in h else Pocket(
+            h["width"], h["length"], h["x_pos"], h["y_pos"], h["z_pos"], h["depth"]
+        ) for h in holes
+    ]
+    if bosses is not None:
+        bosses = [
+            Boss(
+                b["diameter1"], b["diameter2"], b["x_pos"], b["y_pos"], dimensions["thickness"], b["height"]
+            ) for b in bosses
+        ]
     fillet_plate = [
         (dimensions["fillet"], dimensions["fillet"]),
         (dimensions["fillet"], dimensions["height"] - dimensions["fillet"]),
@@ -62,75 +85,17 @@ def plate_with_holes(form, dimensions, holes):
             ]
         )
     }
-    return difference()(
-        plate[form],
-        [h.create() for h in holes]
-    )
-
-
-@click.command()
-@click.argument('filename', required=True, type=click.STRING)
-def create(filename):
-    """
-    Generate a scad file of a plate with optional holes in it.
-    First define the overall geometry: "circle" or "square", then declare the holes.
-
-    The json file must have a certain structure, i.e.:
-
-    {
-        "width": 400,
-        "height": 300,
-        "thickness": 15,
-        "holes": [
-            {
-                "label": "H1",
-                "diameter": 5.5,
-                "x_pos": 20,
-                "y_pos": 20,
-                "z_pos": 0,
-                "depth": 15
-            },
-            ...
-        ]
-    }
-    """
-    p = Path(filename)
-    click.echo(f'Generating {p.stem}.scad')
-    with open(filename) as f:
-        data = json.load(f)
-        if "holes" in data:
-            if "thickness" in data:
-                holes = [
-                    Hole(
-                        h["diameter"], h["x_pos"], h["y_pos"], h["z_pos"], h["depth"]
-                    ) if "diameter" in h else Pocket(
-                        h["width"], h["length"], h["x_pos"], h["y_pos"], h["z_pos"], h["depth"]
-                    ) for h in data["holes"]
-                ]
-                scad_render_to_file(
-                    plate_with_holes(
-                        data["form"] if "form" in data else "square",
-                        {
-                        "width": data["width"] if "width" in data else 0,
-                        "height": data["height"] if "height" in data else 0,
-                        "diameter": data["diameter"] if "diameter" in data else 0,
-                        "thickness": data["thickness"],
-                        "fillet": data["fillet"] if "fillet" in data else 0
-                        },
-                        holes
-                    ),
-                    file_header=f'$fn = {SEGMENTS};',
-                    filepath=f'{p.stem}.scad'
-                )
-                click.echo('Processing complete.')
-            else:
-                click.echo('Declare the thickness of your plate.')
-                click.echo('Process aborted.')
-        else:
-            click.echo('You must include some holes in your plate!')
-            click.echo('Process aborted.')
-    
-
-
-if __name__ == '__main__':
-    create()
+    if bosses is None:
+        model = difference()(
+            plate[form],
+            [h.create() for h in holes]
+        ) 
+    else: 
+        model = difference()(
+            union()(
+                plate[form],
+                [b.create() for b in bosses]
+            ),
+            [h.create() for h in holes]
+        )
+    return model

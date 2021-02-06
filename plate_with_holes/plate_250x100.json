@@ -29,7 +29,7 @@
             "x_pos": 110,
             "y_pos": 10,
             "z_pos": 9.5,
-            "depth": 5.5
+            "depth": 15
         },
         {
             "diameter": 5.5,
@@ -46,18 +46,18 @@
             "depth": 5.5
         },
         {
-            "diameter": 5.5,
+            "diameter": 6.05,
             "x_pos": 110,
             "y_pos": 240,
             "z_pos": 0,
             "depth": 15
         },
         {
-            "diameter": 10,
+            "diameter": 6.05,
             "x_pos": 110,
             "y_pos": 240,
             "z_pos": 9.5,
-            "depth": 5.5
+            "depth": 15.5
         },
         {
             "diameter": 2.5,
@@ -81,6 +81,22 @@
             "x_pos": 75.5,
             "y_pos": 0,
             "z_pos": 14
+        }
+    ],
+    "bosses": [
+        {
+            "diameter1": 15,
+            "diameter2": 15,
+            "x_pos": 110,
+            "y_pos": 10,
+            "height": 5
+        },
+        {
+            "diameter1": 15,
+            "diameter2": 10,
+            "x_pos": 110,
+            "y_pos": 240,
+            "height": 5
         }
     ]
 }
